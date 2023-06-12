@@ -11,4 +11,11 @@ class Solution:
                 else:
                     result.append(str(start) + "->" + str(end))
                 start = nums[i]
+            if i==len(nums):
+                end = nums[i]
+                if start == end:
+                    result.append(str(start))
+                else:
+                    result.append(str(start) + "->" + str(end))
+                
         return result
