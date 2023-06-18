@@ -9,11 +9,11 @@ class Solution:
         @cache
         def dfs(i,j):
             
-            res = 0
+            res = 1
             
             for dx,dy in directions:
                 if (0 <= i+dx < m) and (0 <= j+dy < n) and (grid[i+dx][j+dy] > grid[i][j]):
-                    res += (1 + dfs(i+dx,j+dy))
+                    res += dfs(i+dx,j+dy)
         
             return res
         
@@ -21,4 +21,4 @@ class Solution:
             for j in range(n):
                 result = (result+ (dfs(i,j)%mod))%mod
         
-        return result+m*n
+        return result
