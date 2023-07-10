@@ -15,8 +15,6 @@ class Solution:
             l = self.minDepth(root.left)
             r = self.minDepth(root.right)
 
-            min_depth = 0
-
             if l == 0:
                 return r+1
             elif r == 0:
