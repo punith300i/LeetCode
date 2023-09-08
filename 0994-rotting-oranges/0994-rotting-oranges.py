@@ -6,6 +6,8 @@ class Solution:
         
         
         def bfs(two_list):
+            global good_oranges
+            
             vis = set()
             queue = deque()
             max_mins = 0
@@ -29,23 +31,23 @@ class Solution:
                     if adj_x in range(0,rows) and adj_y in range(0,cols) and (adj_x,adj_y) not in vis:
                         if grid[adj_x][adj_y] == 1:
                             queue.append((adj_x,adj_y,cur_mins+1))
+                            self.good_oranges-=1
                             max_mins = max(max_mins, cur_mins+1)
                             vis.add((adj_x,adj_y))
             return cur_mins
         
         result = 0
+        self.good_oranges = 0
         
         two_list = []
         for r in range(rows):
             for c in range(cols):
                 if grid[r][c] == 2:
                     two_list.append((r,c))
+                if grid[r][c] == 1:
+                    self.good_oranges+=1
+        
         if two_list:          
             result = bfs(two_list)
                     
-        for r in range(rows):
-            for c in range(cols):
-                if grid[r][c] == 1:
-                    return -1
-        
-        return result
+        return result if self.good_oranges==0 else -1
