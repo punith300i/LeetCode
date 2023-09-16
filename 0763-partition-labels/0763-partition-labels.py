@@ -19,9 +19,9 @@ class Solution:
                 running_val[0] = min(running_val[0], current_val[0])
                 running_val[1] = max(running_val[1], current_val[1])
             else:
-                result.append(running_val)
+                result.append(running_val[1] - running_val[0] + 1)
                 running_val = current_val
         
-        result.append(running_val)
+        result.append(running_val[1] - running_val[0] + 1)
         
-        return list(map(lambda x: x[1]-x[0]+1, result))
+        return result
