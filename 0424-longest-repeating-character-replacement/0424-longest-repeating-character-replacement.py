@@ -5,7 +5,7 @@ class Solution:
         res = 0
         for r in range(len(s)):
             c[s[r]]+=1
-            if r-l+1 - c.most_common(1)[0][1] <=k:
+            if r-l+1 - c.most_common(1)[0][1] <= k:
                 res = r-l+1
             else:
                 c[s[l]]-=1
