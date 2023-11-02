@@ -8,10 +8,7 @@ class Solution:
             
             req_stores = 0
             for quantity in quantities:
-                temp = quantity
-                while(temp>0):
-                    temp-=mid
-                    req_stores+=1
+                req_stores += (quantity + mid - 1) // mid
             
             if req_stores <= n:
                 high = mid-1
