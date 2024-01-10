@@ -1,35 +1,18 @@
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        top = 0
-        bottom = len(matrix) - 1
-        search_row = -1
+        n = len(matrix)
+        m = len(matrix[0])
+        i = 0
+        j = m - 1
         
-        while(top<=bottom):
-            mid = top + (bottom - top)//2
-            
-            if target < matrix[mid][0]:
-                bottom = mid-1
-            else:
-                search_row = mid
-                top = mid+1
-        
-        if search_row == -1:
-            return False
-        
-        start = 0
-        end = len(matrix[0])-1
-        
-        while(start<=end):
-            mid = start + (end - start)//2
-        
-            if target == matrix[search_row][mid]:
+        while(i>=0 and i<n and j>=0 and j<m):
+    
+            if matrix[i][j] == target:
                 return True
-            
-            if target < matrix[search_row][mid]:
-                end = mid-1
+    
+            if target < matrix[i][j]:
+                j-=1
             else:
-                start = mid+1
-            
-        return False
-                
+                i+=1
         
+        return False
