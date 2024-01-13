@@ -5,27 +5,14 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-        
-        flags = []
-        def is_same(r,s):
-            if r is None and s is None:
-                return True
-            if r is None or s is None:
-                return False
-            
-            return r.val == s.val and is_same(r.left, s.left) and is_same(r.right, s.right)
-        
-        def pre_order(r,s):
-            if r is None:
-                return 
-            if r.val == s.val:
-                flags.append(is_same(r,s))
+    def isMatch(self, s, t):
+        if not(s and t):
+            return s is t
+        return (s.val == t.val and 
+                self.isMatch(s.left, t.left) and 
+                self.isMatch(s.right, t.right))
 
-            pre_order(r.left,s)
-            pre_order(r.right,s)
-        
-        
-        pre_order(root,subRoot)
-        return any(flags)
-            
+    def isSubtree(self, s, t):
+        if self.isMatch(s, t): return True
+        if not s: return False
+        return self.isSubtree(s.left, t) or self.isSubtree(s.right, t)
