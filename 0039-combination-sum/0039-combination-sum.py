@@ -4,19 +4,17 @@ class Solution:
         def rec_func(index,lst,s):
             nonlocal res
             
-            if s > target:
-                return
-            
             if index == len(candidates):
                 if s==target:
                     res.append(lst.copy())
                     return
                 else:
                     return
-            
-            lst.append(candidates[index])
-            rec_func(index, lst, s+candidates[index])
-            lst.pop()
+                
+            if s<=target:
+                lst.append(candidates[index])
+                rec_func(index, lst, s+candidates[index])
+                lst.pop()
             rec_func(index+1, lst, s)
         
         rec_func(0,[],0)
