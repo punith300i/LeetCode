@@ -1,15 +1,21 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        result = []
-
-        if len(nums) == 1:
-            return [nums[:]]
-        
-        for i in range(len(nums)):
-            n = nums.pop(0)
-            perms = self.permute(nums)
-            for p in perms:
-                p.append(n)
-            result.extend(perms)
-            nums.append(n)
-        return result
+        res = []
+        def rec_func(lst):
+            if len(lst) == len(nums):
+                res.append(lst)
+                return
+            
+            for i in range(len(nums)):
+                if not freq[i]:
+                    freq[i]=1
+                    lst.append(nums[i])
+                    rec_func(lst.copy())
+                    lst.pop()
+                    freq[i]=0
+                
+                
+        freq = [0]*len(nums)
+        rec_func([])
+        return res
+                    
