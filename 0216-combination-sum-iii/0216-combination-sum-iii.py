@@ -1,10 +1,10 @@
 class Solution:
     def combinationSum3(self, k: int, n: int) -> List[List[int]]:
-        res = set()
+        res = []
         
         def rec_func(index, lst, s):
             if s == 0 and len(lst) == k:
-                res.add(lst)
+                res.append(lst)
                 return
             
             if index>=n or index>=10:
