@@ -16,23 +16,26 @@ class Solution:
         
             return True
         
-        def solve(board):
+        def solve(row, col):
             
-            for i in range(len(board)):
-                for j in range(len(board[0])):
-                    
-                    if board[i][j] == '.':
-                        for c in range(1,10):
-                            if check_valid(board, i, j, str(c)):
-                                board[i][j] = str(c)
-                                if solve(board) == True:
-                                    return True
-                                else:
-                                    board[i][j] = '.'
-                        return False
-            return True
+            if row == len(board):
+                return True
+            if col == len(board):
+                return solve(row+1, 0)
+            
+            if board[row][col] == '.':
+                for c in range(1,10):
+                    if check_valid(board, row, col, str(c)):
+                        board[row][col] = str(c)
+                        if solve(row, col+1):
+                            return True
+                        else:
+                            board[row][col] = '.'
+                return False
+            else:
+                return solve(row, col+1)
         
-        solve(board)
+        solve(0,0)
                     
                                 
                                 
