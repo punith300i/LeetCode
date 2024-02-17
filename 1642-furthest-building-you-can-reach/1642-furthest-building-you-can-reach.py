@@ -20,5 +20,5 @@ class Solution:
                     if bricks<0:
                         return i
                 
-        
+        # if all the buildings are covered
         return len(heights)-1
