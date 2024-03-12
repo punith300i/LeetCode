@@ -7,27 +7,27 @@ class Solution:
             if index == len(word):
                 return True
             
+            if row not in range(len(board)) or col not in range(len(board[0])) or board[row][col]!=word[index] or (row,col) in visited:
+                return False
+            
+            visited.add((row,col))
+            
             for x,y in dirs:
-                if 0<=row+x<len(board) and 0<=col+y<len(board[0]) and board[row+x][col+y] == word[index]:
-                    ncol = col+y
-                    nrow = row+x
-                    if (nrow,ncol) not in visited:
-                        visited.add((nrow,ncol))
-                        if traverse(index+1, nrow, ncol) :
-                            return True
-                        else:
-                            visited.remove((nrow,ncol))
+                ncol = col+y
+                nrow = row+x
+                if traverse(index+1, nrow, ncol) :
+                    return True
+            
+            visited.remove((row,col))
+            
             return False
         
         
         for i in range(len(board)):
             for j in range(len(board[0])):
                 if board[i][j] == word[0]:
-                    visited.add((i,j))
-                    if traverse(1,i,j):
+                    if traverse(0,i,j):
                         return True
-                    else:
-                        visited.remove((i,j))
         return False
                     
             
