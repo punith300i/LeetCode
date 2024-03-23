@@ -6,6 +6,6 @@ func removeDuplicates(nums []int) int {
             index++
         }        
     }
-    
+    fmt.Println(nums)
     return index
 }
