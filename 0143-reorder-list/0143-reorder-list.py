@@ -27,4 +27,3 @@ class Solution:
             if not main_cur.next:
                 break
         return head
-            
