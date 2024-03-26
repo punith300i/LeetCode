@@ -1,14 +1,22 @@
 func firstMissingPositive(nums []int) int {
-    var hmap = map[int]bool{}
-    for _, val := range nums{
-        hmap[val]=true
-    }
-    var m int = 1
-    for{
-        if _, ok := hmap[m]; !ok {
-            return m
+    for i := 0; i < len(nums); i++ {
+        j := nums[i]
+        for j >= 1 && j <= len(nums) {
+            if nums[j - 1] > len(nums) || nums[j - 1] <= 0 || nums[j - 1] == j {
+                nums[j - 1] = j
+                break
+            } else {
+                temp := nums[j - 1]
+                nums[j - 1] = j
+                j = temp
+            }
         }
-        m++
     }
-    return 1
+    //fmt.Println(nums)
+    for i := 0; i < len(nums); i++ {
+        if nums[i] != i + 1 {
+            return i + 1
+        }
+    } 
+    return len(nums) + 1
 }
