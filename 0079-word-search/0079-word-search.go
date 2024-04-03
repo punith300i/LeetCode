@@ -35,6 +35,7 @@ func findWord(index int, b *[][]byte, d *[][]int, row int, col int, word string)
         }
     }
     
+    // unmark as visited
     (*b)[row][col] = lastVal
     
     return false
