@@ -1,20 +1,14 @@
-func maxDepth(s string) int {
-    stack := []string{}
-
+func maxDepth(s string) int {   
+    counter := 0
 	maxDepth := 0
 	for _, char := range s {
 		temp := string(char)
-
 		if temp == "(" {
-            // push
-            stack = append(stack, string(temp))
+            counter++
 		} else if temp == ")" {
-			// pop
-            stack = stack[:len(stack)-1]
+            counter--
 		}
-
-		maxDepth = max(maxDepth, len(stack))
+		maxDepth = max(maxDepth, counter)
 	}
-
 	return maxDepth
 }
