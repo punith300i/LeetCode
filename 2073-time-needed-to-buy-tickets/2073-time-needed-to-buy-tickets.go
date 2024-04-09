@@ -6,7 +6,6 @@ func timeRequiredToBuy(tickets []int, k int) int {
         queue = append(queue, i)
     }
     
-    fmt.Println(queue)
     
     for len(queue)>0 {
         idx := queue[0]
