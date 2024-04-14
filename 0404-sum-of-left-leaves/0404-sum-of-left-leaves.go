@@ -17,10 +17,9 @@ func computeSum (root *TreeNode, isLeft bool, res *int) int {
     }
     if root.Left == nil && root.Right == nil && isLeft == true{
         return root.Val
-    }
-    *res = computeSum(root.Left, true, res) + computeSum(root.Right, false, res)
+    } 
     
-    return *res
+    return computeSum(root.Left, true, res) + computeSum(root.Right, false, res)
 }
     
     
