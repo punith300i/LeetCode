@@ -16,9 +16,9 @@ func minDays(bloomDay []int, m int, k int) int {
         // check the number of bouquets we can make with mid number of days
         bcnt:=0
         cnt:=0
-        for _, day := range bloomDay{
+        for i:=0; i<len(bloomDay); i++{
             // if the flower is already bloomed else count 0 as we don't have any adj flowers
-            if day<=mid{
+            if bloomDay[i]<=mid{
                 cnt++
             }else{
                 cnt=0
